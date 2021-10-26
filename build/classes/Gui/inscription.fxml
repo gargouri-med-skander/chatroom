@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="701.0" prefWidth="856.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.InscriptionController">
+   <children>
+      <AnchorPane layoutX="156.0" layoutY="25.0" prefHeight="657.0" prefWidth="551.0" style="-fx-background-color: #9c2b27;">
+         <children>
+            <TextField fx:id="firstName" layoutX="41.0" layoutY="121.0" prefHeight="31.0" prefWidth="217.0" promptText="first name">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="lastName" layoutX="276.0" layoutY="121.0" prefHeight="31.0" prefWidth="217.0" promptText="last name">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="gmail" layoutX="41.0" layoutY="195.0" prefHeight="31.0" prefWidth="453.0" promptText="gmail">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </TextField>
+            <DatePicker fx:id="birthday" layoutX="37.0" layoutY="341.0" onAction="#getDate" prefHeight="31.0" prefWidth="453.0" />
+            <RadioButton fx:id="femalee" layoutX="150.0" layoutY="411.0" mnemonicParsing="false" selected="true" text="female" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="genderr" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="malee" layoutX="319.0" layoutY="411.0" mnemonicParsing="false" selected="true" text="male" textFill="WHITE" toggleGroup="$genderr">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="adminn" layoutX="150.0" layoutY="468.0" mnemonicParsing="false" selected="true" text="Admin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="Rolee" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="membree" layoutX="319.0" layoutY="468.0" mnemonicParsing="false" selected="true" text="Membre" textFill="WHITE" toggleGroup="$Rolee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="217.0" layoutY="35.0" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="signUp" layoutX="338.0" layoutY="600.0" mnemonicParsing="false" onAction="#SignUpMethod" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: #e45652; -fx-effect: #000000; -fx-focus-traversable: #20120f;" text="Sign up" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Label layoutX="52.0" layoutY="411.0" text=" Gender :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="64.0" layoutY="468.0" text="Role :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="320.0" text="Birthday :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="507.0" layoutY="20.0" mnemonicParsing="false" onAction="#xSignUpM" style="-fx-background-color: #e45652;" text="X" textFill="WHITE" fx:id="xSignUp">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="codee" layoutX="52.0" layoutY="542.0" prefHeight="31.0" prefWidth="438.0" promptText="code">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </TextField>
+            <Label fx:id="verification" layoutX="51.0" layoutY="514.0" prefHeight="21.0" prefWidth="438.0" text="verification de l'Admin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailalert" alignment="CENTER" layoutX="40.0" layoutY="226.0" prefHeight="21.0" prefWidth="453.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="newPassword" layoutX="37.0" layoutY="263.0" prefHeight="31.0" prefWidth="453.0" promptText="New Password">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
