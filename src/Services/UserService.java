@@ -5,11 +5,13 @@
  */
 package services;
 
+
 import entites.User;
 import entites.gender;
 import static entites.gender.male;
 import entites.role;
 import static entites.role.Admin;
+
 
 
 
@@ -31,7 +33,7 @@ import utils.BaseDeDonnee;
  */
 public class UserService implements IUserService {
     
-      /*------------------------------------------------------------------------------------*/  
+      /*------------------------------------------------------------------------------------*/
 
     
     Connection connection ;
@@ -40,7 +42,7 @@ public class UserService implements IUserService {
     }
     
     
-      /*------------------------------------------------------------------------------------*/  
+      /*----------------------------------------AJOUTER-USER-------------------------------------------*/  
 
     @Override
     public void ajouterUser(User u) {
@@ -48,6 +50,7 @@ public class UserService implements IUserService {
     
         try {
             String seq="INSERT INTO user (nom,prenom,gmail,password,gender,role,date_naissance)"+"VALUES (?,?,?,?,?,?,'"+u.getDateNaissance()+"')";
+            
             PreparedStatement ps = connection.prepareStatement(seq);
             ps.setString(1,u.getNom());
             ps.setString(2,u.getPrenom());
@@ -72,7 +75,7 @@ public class UserService implements IUserService {
         
     
     }
-      /*------------------------------------------------------------------------------------*/  
+      /*----------------------------------------MODIFICATION-USER-------------------------------------------*/  
 
 
     @Override
@@ -107,15 +110,16 @@ if (rowsUpdated > 0) {
 
     
     
-      /*------------------------------------------------------------------------------------*/  
+      /*------------------------------------SUPPRIMER-USER-----------------------------------------------*/  
 
     @Override
     public void supprimerUser(User u) {
          try {
-        String seq ="DELETE FROM `User` WHERE `gmail`=?";
+             
+        String seq ="DELETE FROM `User` WHERE `gmail`="+u.getGmail();
         PreparedStatement ps = connection.prepareStatement(seq);
        
-            ps.setString(1,u.getGmail());
+           
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,7 +129,7 @@ if (rowsUpdated > 0) {
 
     
     
-      /*------------------------------------------------------------------------------------*/  
+      /*----------------------------------------AFFICHAGE-USERS-----------------------------------------*/  
 
     @Override
     public void afficherUser() {
@@ -145,14 +149,13 @@ if (rowsUpdated > 0) {
     String password = result.getString(6);
     String Gender = result.getString(7);
     String Role = result.getString(8);
-    String output = "User #%d: %s - %s - %s - %s - %s - %s - %s";
-    System.out.println(String.format(output, ++count, nom, prenom, date_naissance, email,password,Gender,Role));
+    
 }
      } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
-    /*-------------------------------------------------------------------------------------------------------------------------*/
+    /*------------------------------------------VERIFICATION-EMAIL DANS BD------------------------------------------------------------------------------*/
         public int VerifyEmail(String x){
       try{  String sql="select * from user Where gmail='"+x+"'" ;
          Statement ps = connection.createStatement();
@@ -172,5 +175,54 @@ if (rowsUpdated > 0) {
            }
        return 2 ;
         }
-    
+        
+        
+       /*-------------------------------------------CHANGE-PASSWORD-------------------------------------------------------------------*/ 
+        public void ChangePassword (String emailR,String x){
+      try{
+          String sql="UPDATE  `user` SET `password`=? Where gmail='"+emailR+"'" ;
+         PreparedStatement ps = connection.prepareStatement(sql);
+          ps.setString(1,x);
+          ps.executeUpdate();
+        
+    }catch(SQLException ex){
+      
+             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+           }
+      
+        }
+        /*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+        public int Login (role r,String e,String p) throws SQLException{
+            String sql ="SELECT `role` FROM `user` WHERE `gmail`='"+e+"'  AND `password` ='"+p+"' ";
+            User u = new User();
+            
+            
+            int n = 0;
+            Statement  ps = connection.createStatement();
+            
+            ResultSet result = ps.executeQuery(sql);
+            
+            
+            while (result.next()){
+                String x =result.getString("role");
+               String y = r.toString();
+                boolean test =x.equals(y);
+            if(test==true){
+                n=1;
+            }
+            else 
+                n=2;
+            }
+            if(n==1){
+                
+                return 1 ;
+            }
+          if(n==2){
+                return 2 ;
+            
+        }
+          return 2 ;
+        }
+        
+    /*-------------------------------------------------------------------------------------------------------------------------------------------------------*/
 }

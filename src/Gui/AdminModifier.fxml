@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120f;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Gui.AdminModifierController">
+   <children>
+      <AnchorPane layoutX="36.0" layoutY="15.0" prefHeight="371.0" prefWidth="528.0" style="-fx-background-color: #9c2b27;">
+         <children>
+            <TextField fx:id="firstName" layoutX="77.0" layoutY="55.0" prefHeight="31.0" prefWidth="392.0" promptText="firstname" />
+            <TextField fx:id="LstName" layoutX="77.0" layoutY="108.0" prefHeight="31.0" prefWidth="392.0" promptText="last name" />
+            <TextField fx:id="adresse" layoutX="77.0" layoutY="163.0" prefHeight="31.0" prefWidth="392.0" promptText="Adress" />
+            <Button fx:id="modifyy" layoutX="170.0" layoutY="297.0" mnemonicParsing="false" onAction="#modifyM" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #e45652;" text="Modify" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="484.0" layoutY="14.0" mnemonicParsing="false" onAction="#xModifyMethod" style="-fx-background-color: #e45652;" text="X" textFill="#fcfafa" fx:id="xModify">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="nposte" layoutX="77.0" layoutY="215.0" prefHeight="31.0" prefWidth="392.0" promptText="n°post" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

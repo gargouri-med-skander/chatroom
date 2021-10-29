@@ -24,6 +24,10 @@ public class Admin extends User {
     this.num_poste=num_poste;
     this.adresse=adresse;
     }
+
+    public Admin() {
+  
+    }
     
     
     

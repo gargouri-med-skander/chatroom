@@ -6,18 +6,22 @@
 package Gui;
 
 
+
+
+import entites.Admin;
 import entites.User;
 import entites.gender;
 import entites.role;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import services.AdminService;
 import services.UserService;
 
 /**
@@ -48,7 +53,7 @@ public class InscriptionController implements Initializable {
     @FXML
     private PasswordField newPassword;
     @FXML
-    public  DatePicker birthday;
+    private  DatePicker birthday;
     @FXML
     private RadioButton femalee;
     @FXML
@@ -69,6 +74,7 @@ public class InscriptionController implements Initializable {
     private TextField codee;
      @FXML
     private Label emailalert;
+     private String adminE;
     
 
     /**
@@ -91,14 +97,7 @@ public class InscriptionController implements Initializable {
 
     }
     
-    /*------------------------------------------VALIDATION-EMAIL--------------------------------------------------------------*/
-       public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
-    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-
-public static boolean validate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
-        return matcher.find();
-}
+    
     /*----------------------------HASH-PASSWORD--------------------------------------*/  
 public static String hashMethod(String t) throws NoSuchAlgorithmException{
     
@@ -113,15 +112,57 @@ public static String hashMethod(String t) throws NoSuchAlgorithmException{
         return sb.toString();
     }
    
-/*-------------------------------------------------------------------------------------*/
-    @FXML
-     void SignUpMethod(ActionEvent event) throws ParseException, IOException, NoSuchAlgorithmException {
+/*------------------------------EXIST-EMAIL------------------------------------------------------*/
+private final String apikey="7d104b06f7b036aefa586e6f7d507611";
+   
+  private StringBuffer checkEmail(String email) throws Exception {
+      
+
+   String url = "http://apilayer.net/api/check?access_key="+apikey+"&email="+email+"&smtp=1&format=1";
+   
+   URL urlobj = new URL(url);
+   
+   HttpURLConnection con = (HttpURLConnection) urlobj.openConnection();
+   con.setRequestMethod("GET");
+
+   con.setRequestProperty("User-Agent", "Chrome/17.0");
+   BufferedReader in = new BufferedReader(
+           new InputStreamReader(con.getInputStream()));
+   String inputLine;
+   StringBuffer response = new StringBuffer();
+
+   while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+   }
+   in.close();
+   System.out.println(response.toString());
+     return response ;
+ 
+  }    
+private boolean existEmail (String email) throws Exception{
+  StringBuffer xx = new  StringBuffer();
+  xx  =checkEmail(email);
+int yy =xx.indexOf("found")+7;
+ String xe =xx.substring(yy,yy+1);
+  int zz =xx.indexOf("check")+7;
+ String ze =xx.substring(zz,zz+1);
+ if((xe.equals("t"))&&(ze.equals("t")))
+     return true;
+ else
+     return false;
+            
+        }
+    /*----------------------------------------------------------------------------------------------------------------------------------*/
+    
+@FXML
+     void SignUpMethod(ActionEvent event) throws ParseException, IOException, NoSuchAlgorithmException, Exception {
               UserService us =new UserService();
         User u = new User();
         String test = "";
        int x =0 ;
        int y = 0 ;
        int z = 0 ;
+       int e = 0 ;
         if(!test.equals(firstName.getText()))
            u.setPrenom(firstName.getText());
         else
@@ -137,11 +178,19 @@ public static String hashMethod(String t) throws NoSuchAlgorithmException{
              JOptionPane.showMessageDialog(null,"You forget to put your last name!!!");
           y = 1 ; 
           }
-        boolean testEmail = validate(gmail.getText());
-        if((testEmail) &&(!test.equals(gmail.getText())))
-        u.setGmail(gmail.getText());
-        else
-            emailalert.setText("invalid email !!!");
+       /*-------------------------------------------------EMAIL-VERIFICATION------------------------------------------------------*/ 
+ try{
+       boolean testEmailExist = existEmail (gmail.getText());
+  if(testEmailExist){
+   u.setGmail(gmail.getText());
+    adminE=gmail.getText();
+  }
+  else{
+     JOptionPane.showMessageDialog(null,"INVALID EMAIL!!!");  
+     e = 1 ;
+  }
+ }catch(Exception ex){}
+        /*--------------------------------------------------------------------------------------------------------------------------*/
        if(!test.equals(newPassword.getText())) 
        {
       String hash = hashMethod(newPassword.getText());  
@@ -168,9 +217,14 @@ public static String hashMethod(String t) throws NoSuchAlgorithmException{
     else 
     {
          String s1 = "admin"  ;
-         if(s1.equals(codee.getText()))
-        
+         if(s1.equals(codee.getText())){
+             AdminService as=new AdminService();
+             Admin a = new Admin ();
+             a.setGmail(adminE);
+             
+           as.ajouterAdmin( a);
            u.setRole(role.Admin);
+         }
          else{
              JOptionPane.showMessageDialog(null,"Wrong Code !!!");
               Stage stage = (Stage) signUp.getScene().getWindow();
@@ -181,7 +235,7 @@ public static String hashMethod(String t) throws NoSuchAlgorithmException{
     }
     /*------------------------------------------------------------------------------------------------------------------------------------------------------*/    
         
-        if((x==0)&&(y==0)&&(z==0))
+        if((x==0)&&(y==0)&&(z==0)&&(e==0))
         {
             us.ajouterUser(u);
          JOptionPane.showMessageDialog(null,"your account has been created successfully  !!!");
@@ -197,5 +251,10 @@ public static String hashMethod(String t) throws NoSuchAlgorithmException{
     Stage stage = (Stage) xSignUp.getScene().getWindow();
     
     stage.close();
-    }
+   }
+  
+    
+    
 }
+   
+

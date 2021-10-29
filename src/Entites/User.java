@@ -37,7 +37,16 @@ public class User {
     public User() {
        
     }
-    
+
+    public User(String prenom, String nom, String gmail) {
+        
+        this.prenom = prenom;
+        this.nom = nom;
+        this.gmail = gmail;
+      
+    }
+
+
    
     public int getIdUser(){
     return id_user;

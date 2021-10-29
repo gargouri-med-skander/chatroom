@@ -17,5 +17,7 @@ public interface IUserService {
     public void modifierUser(User u);  
     public void supprimerUser(User u);
     public void afficherUser();
+    public int VerifyEmail(String x);
+
     
 }

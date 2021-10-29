@@ -1,11 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="879.0" prefWidth="1018.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AdminInterfaceController">
+   <children>
+      <AnchorPane layoutX="208.0" layoutY="18.0" prefHeight="844.0" prefWidth="753.0" style="-fx-background-color: #9c2b27;">
+         <children>
+            <TableView fx:id="tableauMembre" layoutX="9.0" layoutY="231.0" prefHeight="482.0" prefWidth="728.0">
+              <columns>
+                <TableColumn fx:id="IdFirstName" prefWidth="213.0" text="First Name" />
+                <TableColumn fx:id="IdLastName" prefWidth="184.0" text="Last Name" />
+                  <TableColumn fx:id="IdGmail" prefWidth="330.0" text="Gmail" />
+              </columns>
+            </TableView>
+            <Button fx:id="sendAlert" layoutX="50.0" layoutY="738.0" mnemonicParsing="false" onAction="#sendAlertMethod" prefHeight="31.0" prefWidth="309.0" style="-fx-background-color: e45652;" text="send alert !" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="ban" layoutX="388.0" layoutY="738.0" mnemonicParsing="false" onAction="#banMethod" prefHeight="31.0" prefWidth="318.0" style="-fx-background-color: #e45652;" text="BAN !" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="reportList" layoutX="141.0" layoutY="81.0" mnemonicParsing="false" onAction="#reportMethod" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: e45652;" text="Report list" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="themeList" layoutX="422.0" layoutY="81.0" mnemonicParsing="false" onAction="#themeMethod" prefHeight="31.0" prefWidth="179.0" style="-fx-background-color: e45652;" text="Themes list" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="searchh" layoutX="465.0" layoutY="192.0" onAction="#searchMethod" prefHeight="31.0" prefWidth="272.0" promptText="Search" />
+            <Label alignment="CENTER" layoutX="206.0" layoutY="22.0" prefHeight="21.0" prefWidth="335.0" text="Members list" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Button fx:id="refresh" layoutX="18.0" layoutY="184.0" mnemonicParsing="false" onAction="#refreshMethod" style="-fx-background-color: #e45652;" text="Refresh" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label fx:id="firstNamee" layoutX="17.0" layoutY="157.0" prefHeight="21.0" prefWidth="152.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="lastNamee" layoutX="16.0" layoutY="206.0" prefHeight="21.0" prefWidth="167.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="7.0" layoutY="271.0" text="N°Poste :" textFill="#9c2b27">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="nposte" layoutX="83.0" layoutY="271.0" prefHeight="21.0" prefWidth="100.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="10.0" layoutY="322.0" text="Adress :" textFill="#9c2b27">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="adressee" layoutX="68.0" layoutY="322.0" prefHeight="21.0" prefWidth="115.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Button fx:id="modifyy" layoutX="16.0" layoutY="433.0" mnemonicParsing="false" onAction="#modifyMethod" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: e45652;" text="modify" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="logOut" layoutX="17.0" layoutY="480.0" mnemonicParsing="false" onAction="#logOutMethod" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: e45652;" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="show" layoutX="16.0" layoutY="390.0" mnemonicParsing="false" onAction="#showMethod" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: e45652;" text="Show" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

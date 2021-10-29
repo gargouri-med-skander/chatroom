@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AdminReportController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="879.0" prefWidth="1018.0" style="-fx-background-color: #20120f;">
+         <children>
+            <AnchorPane layoutX="133.0" layoutY="18.0" prefHeight="844.0" prefWidth="753.0" style="-fx-background-color: #9c2b27;">
+               <children>
+                  <Button fx:id="memebersList" layoutX="141.0" layoutY="81.0" mnemonicParsing="false" onAction="#MemberMethod" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: e45652;" text="Members list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="themeList" layoutX="422.0" layoutY="81.0" mnemonicParsing="false" onAction="#themeMethod" prefHeight="31.0" prefWidth="179.0" style="-fx-background-color: e45652;" text="Themes list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="206.0" layoutY="22.0" prefHeight="21.0" prefWidth="335.0" text="Report list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

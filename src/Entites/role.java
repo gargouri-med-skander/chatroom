@@ -19,4 +19,13 @@ this.value=value;
     public String toString(){
             return value;
     }
+
+    public static class membre {
+
+        public membre() {
+        }
+    }
+   
+        
+    
 }

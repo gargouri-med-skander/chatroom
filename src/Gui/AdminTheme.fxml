@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AdminThemeController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="6.0" prefHeight="879.0" prefWidth="1327.0" style="-fx-background-color: #20120f;">
+         <children>
+            <AnchorPane layoutX="110.0" layoutY="18.0" prefHeight="844.0" prefWidth="1107.0" style="-fx-background-color: #9c2b27;">
+               <children>
+                  <TableView fx:id="tableauThemes" layoutX="9.0" layoutY="231.0" prefHeight="482.0" prefWidth="728.0">
+                     <columns>
+                        <TableColumn prefWidth="88.0" text="ID Theme" />
+                        <TableColumn prefWidth="158.0" text="Name Theme" />
+                        <TableColumn prefWidth="90.0" text="Visibility" />
+                        <TableColumn prefWidth="78.0" text="capacity" />
+                        <TableColumn prefWidth="109.0" text="n°participate" />
+                        <TableColumn prefWidth="220.0" text="List participate" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="addT" layoutX="50.0" layoutY="738.0" mnemonicParsing="false" onAction="#AddTMethod" prefHeight="31.0" prefWidth="309.0" style="-fx-background-color: e45652;" text="Add Theme" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="banT" layoutX="388.0" layoutY="738.0" mnemonicParsing="false" onAction="#banTMethod" prefHeight="31.0" prefWidth="318.0" style="-fx-background-color: #e45652;" text="BAN Theme !" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="reportList" layoutX="305.0" layoutY="81.0" mnemonicParsing="false" onAction="#reportMethod" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: e45652;" text="Report list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="themeList" layoutX="648.0" layoutY="81.0" mnemonicParsing="false" onAction="#themeMethod" prefHeight="31.0" prefWidth="179.0" style="-fx-background-color: e45652;" text="Members list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="searchT" layoutX="14.0" layoutY="194.0" onAction="#searchTMethod" prefHeight="31.0" prefWidth="272.0" promptText="Search" />
+                  <Label alignment="CENTER" layoutX="371.0" layoutY="25.0" prefHeight="21.0" prefWidth="335.0" text="Themes list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tableauTG" layoutX="750.0" layoutY="231.0" prefHeight="482.0" prefWidth="346.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="ID Theme" />
+                      <TableColumn prefWidth="75.0" text="ID User" />
+                        <TableColumn prefWidth="195.0" text="Gmail" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="searchTG" layoutX="750.0" layoutY="194.0" onAction="#searchTGMethod" prefHeight="31.0" prefWidth="212.0" promptText="search" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -18,8 +18,9 @@ import javafx.stage.Stage;
  *
  * @author everyone
  */
-public class NewFXMain1 extends Application {
-  
+public class NewFXMain extends Application {
+    
+   
         @Override
     public void start(Stage primaryStage) throws IOException {
        
@@ -30,6 +31,7 @@ public class NewFXMain1 extends Application {
         primaryStage.show();
          
     }
+    
 
     /**
      * @param args the command line arguments

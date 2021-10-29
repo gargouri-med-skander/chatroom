@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Gui/NewFXMain1.java</file>
-            <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Utils/BaseDeDonnee.java</file>
             <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Gui/InscriptionController.java</file>
-            <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Gui/ForgotPasswordController.java</file>
-            <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Gui/AuthentificationController.java</file>
             <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Services/UserService.java</file>
+            <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Services/AdminService.java</file>
+            <file>file:/C:/Users/skand/Documents/NetBeansProjects/ChatRoomProject/src/Entites/Admin.java</file>
         </group>
     </open-files>
 </project-private>

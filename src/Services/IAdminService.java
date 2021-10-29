@@ -16,6 +16,7 @@ public interface IAdminService {
     public void ajouterAdmin(Admin a);
     public void modifierAdmin(Admin a);  
     public void supprimerAdmin(Admin a);
-    public void afficherAdmin();
+ 
+
     
 }

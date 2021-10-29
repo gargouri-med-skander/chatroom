@@ -5,6 +5,9 @@
  */
 package services;
 
+import Gui.AdminInterfaceController;
+
+
 import entites.Admin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,10 +40,11 @@ Connection connection ;
     public void ajouterAdmin(Admin a) {
     
         try {
-            String seq="INSERT INTO `admin` (`adresse`,`num_poste`)"+"VALUES (?,?)";
+            String x = "..";
+            int y =0;
+            String seq="INSERT INTO `admin` (adresse,num_poste,gmail)"+" VALUES ('"+x+"','"+y+"','"+a.getGmail()+"')";
             PreparedStatement ps = connection.prepareStatement(seq);
-            ps.setString(1,a.getAdresse());
-            ps.setInt(2,a.getNumPoste());
+           
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -56,18 +60,24 @@ Connection connection ;
     public void modifierAdmin(Admin a) {
         
                 try {
-        String sql = "UPDATE `admin` SET `adresse`=?,`num_poste`=? WHERE `id_user`=?";
+        String sql = "UPDATE `admin` SET `adresse`=?,`num_poste` =?  WHERE `gmail`='"+a.getGmail()+"'";
+          String sql1 = "UPDATE `user` SET `nom`=?,`prenom` =?  WHERE `gmail`='"+a.getGmail()+"'";
  
 PreparedStatement  statement = connection.prepareStatement(sql);
+PreparedStatement  ps= connection.prepareStatement(sql1);
      
 statement.setString(1, a.getAdresse( ));
 statement.setInt(2, a.getNumPoste());
-statement.setInt(3, a.getIdUser());
+ps.setString(1, a.getNom());
+ps.setString(2, a.getPrenom());
+//statement.setString(3, a.getGmail());
+//ps.setString(3, a.getGmail());
+
  
-int rowsUpdated = statement.executeUpdate();
-if (rowsUpdated > 0) {
-    System.out.println("Admin was updated successfully !!!");
-}
+ statement.executeUpdate();
+
+ps.executeUpdate();
+
 } catch (SQLException ex) {
             Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,37 +89,15 @@ if (rowsUpdated > 0) {
 
     @Override
     public void supprimerAdmin(Admin a) {
+        
     }
 
     
     
       /*------------------------------------------------------------------------------------*/  
 
-    @Override
-    public void afficherAdmin() {
-          try {
-        String sql = "SELECT * FROM `user` where `Role`=Admin";
-        Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery(sql);
- 
-        int count = 0;
- 
-     while (result.next()){
-    String nom = result.getString(2);
-    String prenom = result.getString(3);
-    Date date_naissance = result.getDate(4);
-    String email = result.getString(5);
- 
-    String password = result.getString(6);
-    String Gender = result.getString(7);
-    String Role = result.getString(8);
-    String output = "User #%d: %s - %s - %s - %s - %s - %s - %s";
-    System.out.println(String.format(output, ++count, nom, prenom, date_naissance, email,password,Gender,Role));
-}
-     } catch (SQLException ex) {
-            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-    }
+    
+    
 
-  
+    
 }
